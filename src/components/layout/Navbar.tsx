@@ -3,7 +3,6 @@
 
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from '@tanstack/react-router'
-import { personal } from '../../data'
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -29,13 +28,11 @@ export function Navbar() {
       }`}
     >
       <div className="max-w-6xl xl:max-w-7xl mx-auto px-6 md:px-8 h-full flex items-center justify-between">
-        {/* Logo */}
-        <Link to="/" className="text-xl hover:text-[#e8ff47] transition-colors duration-200" style={{ fontFamily: "'DM Serif Display', serif" }}>
-          {personal.name.split(' ').map(n => n[0]).join('')}
+        <Link to="/" className="text-2xl md:text-[1.7rem] hover:text-[#e8ff47] transition-colors duration-200" style={{ fontFamily: "'DM Serif Display', serif" }}>
+          moiskhan.dev
         </Link>
 
-        {/* Navigation Links */}
-        <div className="flex gap-6 text-sm" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+        <div className="flex gap-7 text-base md:text-lg" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
           <Link
             to="/"
             className={`hover:text-[#e8ff47] transition-colors duration-200 ${

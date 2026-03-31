@@ -12,7 +12,7 @@ export const projects: Project[] = [
     longDescription: "CallShield AI is a real-time voice scam detection system built as an Android app. It uses a multi-stage asynchronous pipeline — Deepgram for speech-to-text and Gemini 3.1 Flash for LLM-based scam pattern detection — to identify coercion, urgency tactics, and social engineering in live phone calls. It achieves sub-3 second end-to-end latency and a 90%+ true positive rate benchmarked against synthetic scam taxonomies. Unlike passive tools, it alerts users before the scam succeeds.",
     liveUrl: "https://github.com/mois-khan/CallShield-AI", // Update with deployed URL when available
     repoUrl: "https://github.com/mois-khan/CallShield-AI",
-    stack: ["Node.js", "WebSockets", "Deepgram STT", "Gemini 3.5 Flash", "Flutter", "Twilio", "Android"],
+    stack: ["Node.js", "WebSockets", "Deepgram STT", "Gemini 3.1 Flash", "Flutter", "Twilio", "Android"],
     tags: ["AI", "Security", "Android", "Real-time"],
     featured: true,
     coverImage: "/images/projects/callshield-ai.png",
