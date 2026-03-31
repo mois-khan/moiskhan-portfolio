@@ -28,7 +28,7 @@ export function Navbar() {
           : 'border-transparent bg-transparent'
       }`}
     >
-      <div className="max-w-5xl mx-auto px-6 h-full flex items-center justify-between">
+      <div className="max-w-6xl xl:max-w-7xl mx-auto px-6 md:px-8 h-full flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="text-xl hover:text-[#e8ff47] transition-colors duration-200" style={{ fontFamily: "'DM Serif Display', serif" }}>
           {personal.name.split(' ').map(n => n[0]).join('')}

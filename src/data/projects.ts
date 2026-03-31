@@ -17,14 +17,14 @@ export const projects: Project[] = [
     featured: true,
     coverImage: "/images/projects/callshield-ai.png",
     status: "live",
-    year: 2025,
+    year: 2026,
   },
   {
     slug: "saferoute-ai",
     title: "SafeRoute AI",
     description: "A navigation web app that shows how safe a route actually is — factoring in police stations, hospitals, street lighting, and more.",
     longDescription: "SafeRoute AI is a web-based navigation prototype that reimagines routing by prioritising 'Safety Density' over shortest distance. It uses OpenStreetMap (OSM) geospatial datasets and a custom heuristic that weighs nearby safety anchors — police stations, hospitals, street lighting conditions — to score and recommend safer paths through urban areas. Demonstrated a 15% improvement in safety score compared to baseline shortest-path algorithms.",
-    liveUrl: "https://github.com/akavinashsingh/safeRoute-AI", // Update with deployed URL when available
+    liveUrl: "https://saferoute-frontend.onrender.com/app.html",
     repoUrl: "https://github.com/akavinashsingh/safeRoute-AI",
     stack: ["React", "Node.js", "OpenStreetMap", "Python", "Gemini API"],
     tags: ["AI", "Maps", "Urban Safety", "Full-stack"],
