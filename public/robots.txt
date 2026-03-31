@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://moiskhan.dev/sitemap.xml
