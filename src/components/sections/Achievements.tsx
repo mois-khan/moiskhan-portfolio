@@ -6,7 +6,7 @@ import { achievements } from '../../data'
 
 export function Achievements() {
   return (
-    <section className="py-20 md:py-32">
+    <section className="py-16">
       <div className="max-w-5xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -14,11 +14,11 @@ export function Achievements() {
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
         >
-          <h2 className="text-3xl md:text-4xl font-serif mb-12 text-[--text-primary]">
+          <h2 className="text-3xl md:text-4xl font-serif mb-6 text-[--text-primary]">
             Achievements
           </h2>
 
-          <div className="space-y-6">
+          <div className="space-y-4">
             {achievements.map((achievement, index) => (
               <motion.article
                 key={achievement.title}

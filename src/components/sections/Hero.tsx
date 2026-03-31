@@ -7,8 +7,8 @@ import { personal } from '../../data'
 
 export function Hero() {
   return (
-    <section className="min-h-screen flex items-start pt-32 md:pt-40">
-      <div className="max-w-5xl mx-auto px-6 py-20">
+    <section className="pt-32 pb-16">
+      <div className="max-w-5xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}

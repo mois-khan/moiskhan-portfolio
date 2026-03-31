@@ -6,7 +6,7 @@ import { skills } from '../../data'
 
 export function Skills() {
   return (
-    <section className="py-20 md:py-32">
+    <section className="py-16">
       <div className="max-w-5xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -14,11 +14,11 @@ export function Skills() {
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
         >
-          <h2 className="text-3xl md:text-4xl font-serif mb-12 text-[--text-primary]">
+          <h2 className="text-3xl md:text-4xl font-serif mb-6 text-[--text-primary]">
             Skills
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {skills.map((skillGroup, index) => (
               <motion.div
                 key={skillGroup.category}
