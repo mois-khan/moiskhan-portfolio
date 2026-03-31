@@ -6,7 +6,7 @@ import { skills } from '../../data'
 
 export function Skills() {
   return (
-    <section className="py-20 md:py-32">
+    <section className="py-16">
       <div className="max-w-5xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -14,11 +14,11 @@ export function Skills() {
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
         >
-          <h2 className="text-3xl md:text-4xl mb-12 text-[#f0f0f0]" style={{ fontFamily: "'DM Serif Display', serif" }}>
+          <h2 className="text-3xl md:text-4xl font-serif mb-6 text-[--text-primary]">
             Skills
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {skills.map((skillGroup, index) => (
               <motion.div
                 key={skillGroup.category}
@@ -26,19 +26,18 @@ export function Skills() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1, ease: 'easeOut' }}
-                className="bg-[#111111] border border-[#222222] rounded-lg p-6 hover:border-[#333333] transition-colors duration-200"
+                className="bg-[--bg-secondary] border border-[--border] rounded-lg p-6 hover:border-[--border-hover] transition-colors duration-200"
               >
-                <h3 className="text-lg font-medium mb-4 text-[#f0f0f0]" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                <h3 className="text-lg font-sans font-medium mb-4 text-[--text-primary]">
                   {skillGroup.category}
                 </h3>
                 <ul className="space-y-2">
                   {skillGroup.items.map((skill) => (
                     <li
                       key={skill}
-                      className="text-sm text-[#a0a0a0] flex items-start"
-                      style={{ fontFamily: "'DM Sans', sans-serif" }}
+                      className="text-sm text-[--text-secondary] flex items-start"
                     >
-                      <span className="text-[#e8ff47] mr-2">•</span>
+                      <span className="text-[--accent] mr-2">•</span>
                       {skill}
                     </li>
                   ))}
