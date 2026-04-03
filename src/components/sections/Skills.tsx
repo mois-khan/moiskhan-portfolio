@@ -1,5 +1,5 @@
 // src/components/sections/Skills.tsx
-// Skills section with categories
+// Skills section — bento grid with category cards
 
 import { motion } from 'framer-motion'
 import { skills } from '../../data'
@@ -9,7 +9,7 @@ const sectionVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: 'easeOut', staggerChildren: 0.1 },
+    transition: { duration: 0.6, ease: 'easeOut', staggerChildren: 0.08 },
   },
 }
 
@@ -18,59 +18,93 @@ const cardVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
 }
 
+// Assign a subtle unique icon/emoji per category for visual variety
+const categoryIcons: Record<string, string> = {
+  Languages: '{ }',
+  Frontend: '◧',
+  'Backend & Systems': '⚙',
+  Databases: '◉',
+  'AI & ML': '◈',
+  'Tools & Platforms': '▣',
+}
+
 export function Skills() {
   return (
-    <section className="py-20 md:py-32">
-      <div className="max-w-5xl mx-auto px-6">
+    <section className="py-20 md:py-28">
+      <div className="max-w-6xl mx-auto px-8">
         <motion.div
           variants={sectionVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
+          viewport={{ once: true, margin: '-80px' }}
         >
+          <motion.p
+            className="text-xs uppercase tracking-[0.2em] mb-4"
+            style={{ fontFamily: 'var(--font-mono)', color: 'var(--accent)' }}
+            variants={cardVariants}
+          >
+            Tech Stack
+          </motion.p>
+
           <motion.h2
-            className="text-3xl md:text-4xl mb-8"
+            className="text-3xl md:text-4xl mb-10"
             style={{ color: 'var(--text-primary)' }}
             variants={cardVariants}
           >
-            Skills
+            Tools I work with
           </motion.h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
             {skills.map((skillGroup) => (
               <motion.div
                 key={skillGroup.category}
                 variants={cardVariants}
                 whileHover={{
-                  y: -4,
-                  borderColor: 'var(--border-hover)',
-                  boxShadow: '0 12px 40px rgba(0,0,0,0.4)',
+                  y: -3,
+                  borderColor: 'rgba(255,255,255,0.10)',
+                  boxShadow: '0 12px 40px rgba(0,0,0,0.35)',
                 }}
                 transition={{ duration: 0.2, ease: 'easeOut' }}
-                className="rounded-xl p-7"
+                className="rounded-xl p-6"
                 style={{
                   background: 'var(--bg-secondary)',
                   border: '1px solid var(--border)',
                 }}
               >
-                <h3
-                  className="text-lg font-medium mb-5"
-                  style={{ fontFamily: 'var(--font-body)', color: 'var(--text-primary)' }}
-                >
-                  {skillGroup.category}
-                </h3>
-                <ul className="space-y-3">
+                <div className="flex items-center gap-3 mb-5">
+                  <span
+                    className="w-9 h-9 rounded-lg flex items-center justify-center text-sm"
+                    style={{
+                      background: 'var(--accent-subtle)',
+                      color: 'var(--accent)',
+                      border: '1px solid rgba(124,92,252,0.12)',
+                    }}
+                  >
+                    {categoryIcons[skillGroup.category] || '◆'}
+                  </span>
+                  <h3
+                    className="text-base font-medium"
+                    style={{ fontFamily: 'var(--font-body)', color: 'var(--text-primary)' }}
+                  >
+                    {skillGroup.category}
+                  </h3>
+                </div>
+                <div className="flex flex-wrap gap-2">
                   {skillGroup.items.map((skill) => (
-                    <li
+                    <span
                       key={skill}
-                      className="text-base flex items-start"
-                      style={{ fontFamily: 'var(--font-body)', color: 'var(--text-secondary)' }}
+                      className="px-3 py-1.5 rounded-md text-xs"
+                      style={{
+                        fontFamily: 'var(--font-mono)',
+                        background: 'var(--bg-tertiary)',
+                        color: 'var(--text-secondary)',
+                        border: '1px solid var(--border)',
+                      }}
                     >
-                      <span className="mr-2" style={{ color: 'var(--accent)' }}>•</span>
                       {skill}
-                    </li>
+                    </span>
                   ))}
-                </ul>
+                </div>
               </motion.div>
             ))}
           </div>

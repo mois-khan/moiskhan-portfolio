@@ -1,5 +1,5 @@
 // src/routes/projects/$slug.tsx
-// Individual project embed page with iframe
+// Individual project embed page
 
 import { createFileRoute } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
@@ -20,7 +20,7 @@ function ProjectEmbedPage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: 'easeOut' }}
-        className="max-w-5xl mx-auto px-6 py-20"
+        className="max-w-6xl mx-auto px-8 pt-28 pb-20"
       >
         <h1
           className="text-4xl md:text-5xl mb-4"
@@ -28,7 +28,7 @@ function ProjectEmbedPage() {
         >
           Project not found
         </h1>
-        <p style={{ fontFamily: 'var(--font-body)', color: 'var(--text-secondary)' }} className="text-lg">
+        <p style={{ color: 'var(--text-secondary)' }} className="text-lg">
           We could not find a project with slug:{' '}
           <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--accent)' }}>{slug}</span>
         </p>

@@ -10,7 +10,7 @@ type SectionHeadingProps = {
 
 export function SectionHeading({ children, className }: SectionHeadingProps) {
   return (
-    <h2 className={cn('text-3xl md:text-4xl font-serif mb-8', className)}>
+    <h2 className={cn('text-3xl md:text-4xl mb-8', className)} style={{ fontFamily: 'var(--font-display)' }}>
       {children}
     </h2>
   )

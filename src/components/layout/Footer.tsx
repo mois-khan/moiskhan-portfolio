@@ -1,5 +1,5 @@
 // src/components/layout/Footer.tsx
-// Site footer with social links
+// Minimal footer with social links
 
 import { personal } from '../../data'
 
@@ -8,54 +8,43 @@ export function Footer() {
 
   return (
     <footer
-      className="py-12 mt-20"
+      className="py-10 mt-16"
       style={{ borderTop: '1px solid var(--border)' }}
     >
-      <div className="max-w-5xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <p
-            className="text-sm"
-            style={{ color: 'var(--text-tertiary)' }}
-          >
-            © {currentYear} {personal.name}. All rights reserved.
-          </p>
+      <div className="max-w-6xl mx-auto px-8">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div
+              className="w-6 h-6 rounded flex items-center justify-center text-white text-[10px] font-bold"
+              style={{ background: 'var(--accent)', fontFamily: 'var(--font-display)' }}
+            >
+              M
+            </div>
+            <p
+              className="text-sm"
+              style={{ color: 'var(--text-tertiary)' }}
+            >
+              © {currentYear} {personal.name}
+            </p>
+          </div>
 
-          <div className="flex items-center gap-6" style={{ fontFamily: 'var(--font-mono)' }}>
-            <a
-              href={personal.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm transition-colors duration-200"
-              style={{ color: 'var(--text-secondary)' }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
-            >
-              GitHub
-            </a>
-            <a
-              href={personal.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm transition-colors duration-200"
-              style={{ color: 'var(--text-secondary)' }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
-            >
-              LinkedIn
-            </a>
-            {personal.twitter && (
+          <div className="flex items-center gap-5" style={{ fontFamily: 'var(--font-mono)' }}>
+            {[
+              { label: 'GitHub', href: personal.github },
+              { label: 'LinkedIn', href: personal.linkedin },
+              ...(personal.twitter ? [{ label: 'Twitter', href: personal.twitter }] : []),
+            ].map(({ label, href }) => (
               <a
-                href={personal.twitter}
+                key={label}
+                href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm transition-colors duration-200"
-                style={{ color: 'var(--text-secondary)' }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
-                onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
+                className="text-xs transition-colors duration-200 hover:text-[var(--accent)]"
+                style={{ color: 'var(--text-tertiary)' }}
               >
-                Twitter
+                {label}
               </a>
-            )}
+            ))}
           </div>
         </div>
       </div>
