@@ -24,7 +24,7 @@ export function Footer() {
               className="text-sm"
               style={{ color: 'var(--text-tertiary)' }}
             >
-              © {currentYear} {personal.name}
+              © {currentYear} {personal.domain}
             </p>
           </div>
 

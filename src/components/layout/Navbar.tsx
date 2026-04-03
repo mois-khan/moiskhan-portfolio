@@ -10,6 +10,7 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const location = useLocation()
+  const hasLogo = Boolean(personal.logoUrl?.trim())
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 40)
@@ -59,17 +60,28 @@ export function Navbar() {
             className="group flex items-center gap-3 hover:opacity-90 transition-opacity duration-200"
           >
             <div
-              className="w-10 h-10 rounded-xl flex items-center justify-center text-white text-base font-bold"
+              className={hasLogo
+                ? 'w-10 h-10 rounded-full overflow-hidden flex items-center justify-center'
+                : 'w-10 h-10 rounded-xl flex items-center justify-center text-white text-base font-bold'}
               style={{
-                background: 'linear-gradient(135deg, var(--accent) 0%, #9b7dff 100%)',
+                background: hasLogo ? 'transparent' : 'linear-gradient(135deg, var(--accent) 0%, #9b7dff 100%)',
                 fontFamily: 'var(--font-display)',
-                boxShadow: '0 0 20px rgba(124, 92, 252, 0.25)',
+                boxShadow: hasLogo ? 'none' : '0 0 20px rgba(124, 92, 252, 0.25)',
               }}
             >
-              M
+              {hasLogo ? (
+                <img
+                  src={personal.logoUrl}
+                  alt={`${personal.name} logo`}
+                  className="w-full h-full object-cover object-center scale-110"
+                  loading="lazy"
+                />
+              ) : (
+                'M'
+              )}
             </div>
             <span
-              className="text-xl font-semibold hidden sm:block"
+              className="text-base sm:text-xl font-semibold max-w-[10rem] truncate"
               style={{ fontFamily: 'var(--font-display)', color: 'var(--text-primary)' }}
             >
               Mois Khan

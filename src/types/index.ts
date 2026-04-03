@@ -43,11 +43,13 @@ export type BlogPost = {
 
 export type Personal = {
   name: string
+  logoUrl?: string              // Optional — path from /public, e.g. "/images/logo.png"
   tagline: string               // Short headline under name in hero
   bio: string                   // About section paragraph
   email: string
   github: string                // Full URL
   linkedin: string              // Full URL
+  domain: string
   twitter?: string              // Optional
   resumeUrl?: string            // Optional — link to PDF resume
   location: string              // e.g. "Mumbai, India"

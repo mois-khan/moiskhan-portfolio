@@ -99,7 +99,7 @@ export function ProjectCard({ project, githubInfo, loadingGitHubInfo = false }: 
 
         {/* GitHub info */}
         <div
-          className="rounded-lg p-4 mb-6 min-h-[72px]"
+          className="hidden md:block rounded-lg p-4 mb-6 min-h-[72px]"
           style={{
             background: 'var(--bg-primary)',
             border: '1px solid var(--border)',

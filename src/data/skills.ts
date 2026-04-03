@@ -14,7 +14,7 @@ export const skills: Skill[] = [
   },
   {
     category: "Backend & Systems",
-    items: ["Node.js", "Express", "Django", "Flask", "WebSockets", "REST APIs"],
+    items: ["Node.js", "Express", "Flask", "WebSockets", "REST APIs"],
   },
   {
     category: "Databases",

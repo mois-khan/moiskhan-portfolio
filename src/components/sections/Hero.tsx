@@ -19,7 +19,7 @@ const fadeIn = (delay: number) => ({
 })
 
 const roles = [
-  'Full-Stack Developer',
+  'Developer',
   'AI Engineer',
   'Problem Solver',
   'Open Source Builder',
@@ -205,7 +205,7 @@ export function Hero() {
                   <span className="fn">developer</span> = {'{'}
                 </p>
                 <p>&nbsp;&nbsp;name: <span className="string">"Mois Khan"</span>,</p>
-                <p>&nbsp;&nbsp;role: <span className="string">"Full-Stack Developer"</span>,</p>
+                <p>&nbsp;&nbsp;role: <span className="string">"Developer"</span>,</p>
                 <p>&nbsp;&nbsp;focus: <span className="string">"AI-Powered Web Apps"</span>,</p>
                 <p>&nbsp;&nbsp;education: <span className="string">"B.Tech CSE, 3rd Year"</span>,</p>
                 <p>&nbsp;&nbsp;stack: [<span className="string">"React"</span>, <span className="string">"Node"</span>, <span className="string">"Python"</span>, <span className="string">"LLMs"</span>],</p>
