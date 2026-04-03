@@ -15,8 +15,10 @@ function RootLayout() {
 
   return (
     <div className="min-h-screen flex flex-col" style={{ background: 'var(--bg-primary)' }}>
-      {/* Subtle dot grid overlay — always visible */}
-      <div className="dot-grid-bg" />
+      {/* Layered background: mesh gradient + noise texture + top vignette */}
+      <div className="mesh-gradient-bg" />
+      <div className="noise-overlay" />
+      <div className="top-vignette" />
 
       <Navbar />
       <main className="flex-1 relative z-[1]">

@@ -27,7 +27,7 @@ export function Hero() {
       <motion.div className="hero-glow-primary" {...fadeIn(0)} />
       <motion.div className="hero-glow-secondary" {...fadeIn(0)} />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-8 pt-24 pb-20 w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 pt-24 pb-20 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* ─── Left: Text content ─── */}
           <div>

@@ -20,7 +20,7 @@ function ProjectEmbedPage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: 'easeOut' }}
-        className="max-w-6xl mx-auto px-8 pt-28 pb-20"
+        className="max-w-7xl mx-auto px-6 md:px-10 pt-28 pb-20"
       >
         <h1
           className="text-4xl md:text-5xl mb-4"

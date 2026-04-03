@@ -24,7 +24,7 @@ export function FeaturedProjects() {
 
   return (
     <section className="py-20 md:py-28">
-      <div className="max-w-6xl mx-auto px-8">
+      <div className="max-w-7xl mx-auto px-6 md:px-10">
         <motion.div
           variants={sectionVariants}
           initial="hidden"

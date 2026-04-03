@@ -24,7 +24,7 @@ export function ProjectEmbed({ project }: ProjectEmbedProps) {
 
   return (
     <section className="min-h-screen pt-24 pb-10">
-      <div className="max-w-6xl mx-auto px-8">
+      <div className="max-w-7xl mx-auto px-6 md:px-10">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
