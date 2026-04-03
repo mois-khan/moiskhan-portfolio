@@ -9,6 +9,7 @@ import { Footer } from '../components/layout/Footer'
 import { ScrollProgress } from '../components/ui/ScrollProgress'
 import { BackToTop } from '../components/ui/BackToTop'
 import { CommandPalette } from '../components/ui/CommandPalette'
+import { Analytics } from "@vercel/analytics/next"
 
 export const Route = createRootRoute({
   component: RootLayout,
