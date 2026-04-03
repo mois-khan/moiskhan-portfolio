@@ -1,6 +1,36 @@
+@import url('https://cdn.jsdelivr.net/npm/@calcom/cal-sans@1.0.1/styles.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  /* ─── Backgrounds — deep navy-tinted blacks ───────────── */
+  --bg-primary: #08080c;
+  --bg-secondary: #0f1017;
+  --bg-tertiary: #181820;
+  --bg-elevated: #1e1e2a;
+
+  /* ─── Text — cool-toned grays ─────────────────────────── */
+  --text-primary: #ededf0;
+  --text-secondary: #8b8b9e;
+  --text-tertiary: #55556a;
+
+  /* ─── Accent — violet / purple ────────────────────────── */
+  --accent: #7c5cfc;
+  --accent-hover: #9b7dff;
+  --accent-subtle: rgba(124, 92, 252, 0.08);
+  --accent-glow: rgba(124, 92, 252, 0.15);
+
+  /* ─── Borders ─────────────────────────────────────────── */
+  --border: rgba(255, 255, 255, 0.06);
+  --border-hover: rgba(255, 255, 255, 0.12);
+
+  /* ─── Fonts ───────────────────────────────────────────── */
+  --font-display: 'Cal Sans', 'Inter', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
 
 * {
   margin: 0;
@@ -9,30 +39,275 @@
 }
 
 body {
-  margin: 0;
-  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #0a0a0a;
-  color: #f0f0f0;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
 }
 
-/* Typography */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'DM Serif Display', serif;
+  font-family: var(--font-display);
 }
 
 code, pre, kbd, samp {
-  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-family: var(--font-mono);
 }
 
-/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Remove link underlines by default */
 a {
   text-decoration: none;
   color: inherit;
+}
+
+/* ─── Dot grid background ─────────────────────────────────── */
+
+.dot-grid-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(255, 255, 255, 0.035) 1px,
+    transparent 0
+  );
+  background-size: 32px 32px;
+}
+
+/* ─── Hero section background effects ─────────────────────── */
+
+@keyframes glow-drift {
+  0%, 100% { transform: translate(0, 0) scale(1);       opacity: 0.55; }
+  33%       { transform: translate(-30px, 40px) scale(1.08); opacity: 0.8; }
+  66%       { transform: translate(40px, -20px) scale(0.95); opacity: 0.6; }
+}
+
+@keyframes glow-drift-secondary {
+  0%, 100% { transform: translate(0, 0) scale(1);        opacity: 0.4; }
+  40%       { transform: translate(30px, -50px) scale(1.06); opacity: 0.6; }
+  70%       { transform: translate(-40px, 20px) scale(0.97); opacity: 0.45; }
+}
+
+.hero-glow-primary {
+  position: absolute;
+  top: -120px;
+  right: -80px;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(
+    circle at center,
+    rgba(124, 92, 252, 0.14) 0%,
+    rgba(124, 92, 252, 0.04) 50%,
+    transparent 70%
+  );
+  filter: blur(80px);
+  animation: glow-drift 8s ease-in-out infinite;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.hero-glow-secondary {
+  position: absolute;
+  bottom: -120px;
+  left: -60px;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(
+    circle at center,
+    rgba(56, 120, 255, 0.10) 0%,
+    rgba(56, 120, 255, 0.03) 50%,
+    transparent 70%
+  );
+  filter: blur(80px);
+  animation: glow-drift-secondary 10s ease-in-out infinite;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+/* ─── Animated gradient border on cards ───────────────────── */
+
+.gradient-border-card {
+  position: relative;
+  isolation: isolate;
+}
+
+.gradient-border-card::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(124, 92, 252, 0.45),
+    rgba(56, 120, 255, 0.35),
+    rgba(124, 92, 252, 0.15)
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  background-size: 200% 200%;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.gradient-border-card:hover::after {
+  opacity: 1;
+  animation: gradient-border-shift 2s ease infinite;
+}
+
+@keyframes gradient-border-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ─── Section divider line ────────────────────────────────── */
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--border-hover) 50%,
+    transparent 100%
+  );
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ─── Code block / terminal styling ───────────────────────── */
+
+.terminal-window {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-primary);
+}
+
+.terminal-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.terminal-body {
+  padding: 20px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.terminal-body .comment {
+  color: var(--text-tertiary);
+}
+
+.terminal-body .keyword {
+  color: var(--accent);
+}
+
+.terminal-body .string {
+  color: #6ee7b7;
+}
+
+.terminal-body .fn {
+  color: #93c5fd;
+}
+
+/* ─── Blog article prose ──────────────────────────────────── */
+
+.prose-blog {
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+.prose-blog p {
+  margin-bottom: 1.5rem;
+  color: var(--text-secondary);
+}
+
+.prose-blog h2 {
+  font-size: 1.6rem;
+  color: var(--text-primary);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.prose-blog h3 {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose-blog ul, .prose-blog ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+  color: var(--text-secondary);
+}
+
+.prose-blog li {
+  margin-bottom: 0.5rem;
+}
+
+.prose-blog strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.prose-blog em {
+  color: var(--accent);
+  font-style: normal;
+}
+
+.prose-blog blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 1.25rem;
+  margin: 1.5rem 0;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.prose-blog code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--bg-tertiary);
+  color: var(--accent);
+}
+
+/* ─── Shimmer loading effect ──────────────────────────────── */
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--bg-tertiary) 25%,
+    var(--bg-elevated) 50%,
+    var(--bg-tertiary) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease infinite;
 }

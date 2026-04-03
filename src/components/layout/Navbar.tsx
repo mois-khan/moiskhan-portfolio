@@ -1,5 +1,5 @@
 // src/components/layout/Navbar.tsx
-// Top navigation bar with scroll blur effect
+// Top navigation bar — transparent until 50px scroll, then blur + border
 
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from '@tanstack/react-router'
@@ -9,11 +9,8 @@ export function Navbar() {
   const location = useLocation()
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
-    }
-
-    window.addEventListener('scroll', handleScroll)
+    const handleScroll = () => setIsScrolled(window.scrollY > 50)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
@@ -21,42 +18,38 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 h-16 border-b transition-all duration-200 ${
-        isScrolled
-          ? 'border-[#222222] bg-[#0a0a0a]/80 backdrop-blur-md'
-          : 'border-transparent bg-transparent'
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 h-16"
+      style={{
+        background: isScrolled ? 'rgba(8,8,12,0.85)' : 'transparent',
+        backdropFilter: isScrolled ? 'blur(16px) saturate(180%)' : 'none',
+        borderBottom: isScrolled ? '1px solid var(--border)' : '1px solid transparent',
+        transition: 'background 300ms ease, backdrop-filter 300ms ease, border-color 300ms ease',
+      }}
     >
-      <div className="max-w-6xl xl:max-w-7xl mx-auto px-6 md:px-8 h-full flex items-center justify-between">
-        <Link to="/" className="text-2xl md:text-[1.7rem] hover:text-[#e8ff47] transition-colors duration-200" style={{ fontFamily: "'DM Serif Display', serif" }}>
+      <div className="max-w-5xl mx-auto px-6 h-full flex items-center justify-between">
+        <Link
+          to="/"
+          className="text-xl hover:opacity-80 transition-opacity duration-200"
+          style={{ fontFamily: 'var(--font-display)', color: 'var(--text-primary)' }}
+        >
           moiskhan.dev
         </Link>
 
-        <div className="flex gap-7 text-base md:text-lg" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
-          <Link
-            to="/"
-            className={`hover:text-[#e8ff47] transition-colors duration-200 ${
-              isActive('/') ? 'text-[#e8ff47]' : 'text-[#f0f0f0]'
-            }`}
-          >
-            Home
-          </Link>
-          <Link
-            to="/projects"
-            className={`hover:text-[#e8ff47] transition-colors duration-200 ${
-              isActive('/projects') ? 'text-[#e8ff47]' : 'text-[#f0f0f0]'
-            }`}
-          >
-            Projects
-          </Link>
-          <Link
-            to="/blog"
-            className={`hover:text-[#e8ff47] transition-colors duration-200 ${
-              isActive('/blog') ? 'text-[#e8ff47]' : 'text-[#f0f0f0]'
-            }`}
-          >
-            Blog
-          </Link>
+        <div className="flex gap-7 text-sm" style={{ fontFamily: 'var(--font-mono)' }}>
+          {[
+            { to: '/', label: 'Home' },
+            { to: '/projects', label: 'Projects' },
+            { to: '/blog', label: 'Blog' },
+          ].map(({ to, label }) => (
+            <Link
+              key={to}
+              to={to}
+              className="transition-colors duration-200"
+              style={{ color: isActive(to) ? 'var(--accent)' : 'var(--text-secondary)' }}
+            >
+              {label}
+            </Link>
+          ))}
         </div>
       </div>
     </nav>

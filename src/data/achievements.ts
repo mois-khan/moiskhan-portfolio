@@ -21,8 +21,8 @@ export const achievements: Achievement[] = [
     link: undefined,                   // Add certificate link if available
   },
   {
-    title: "OpenAI x NXT Buildathon",
-    event: "OpenAI x NXT Buildathon",
+    title: "OpenAI x NXTWave Buildathon",
+    event: "OpenAI x NXTWave Buildathon",
     date: "2025-09-15",
     description: "Developed a generative AI prototype with a focus on ethical AI integration. Competed in a national-level buildathon organised in collaboration with OpenAI.",
     position: "Participant",

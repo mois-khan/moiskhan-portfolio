@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
 import { ProjectCard } from '../../components/projects/ProjectCard'
+
 import { projects } from '../../data'
 
 type GitHubRepoInfo = {
@@ -97,12 +98,7 @@ function ProjectsPage() {
   }, [reposToFetch])
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, ease: 'easeOut' }}
-      className="max-w-6xl xl:max-w-7xl mx-auto px-6 md:px-8 py-20"
-    >
+    <div className="max-w-5xl mx-auto px-6 py-20">
       <h1 className="text-4xl md:text-5xl font-serif mb-6">Projects</h1>
       <p className="text-[--text-secondary] text-lg mb-12">
         Detailed case studies of my work, enriched with live repository stats fetched from GitHub.
@@ -125,6 +121,6 @@ function ProjectsPage() {
           </motion.div>
         ))}
       </div>
-    </motion.div>
+    </div>
   )
 }

@@ -4,52 +4,31 @@ This defines the visual language for `moiskhan.dev`. Claude must follow these ru
 
 ---
 
-## Theme
+COLORS:
+--bg-primary:    #000000          ← pure black like Raycast
+--bg-secondary:  #0d0d0d          ← cards
+--bg-tertiary:   #141414          ← hover states
+--text-primary:  #ffffff
+--text-secondary:#a0a0a0
+--text-tertiary: #505050
+--accent:        #e8ff47          ← keep your yellow-green, it works
+--accent-glow:   rgba(232,255,71,0.15)
+--border:        rgba(255,255,255,0.06)
+--border-hover:  rgba(255,255,255,0.12)
+--glow-purple:   rgba(139,92,246,0.15)  ← Raycast signature glow
 
-**Dark-first.** The entire site uses a dark background. There is no light mode toggle.
+TYPOGRAPHY:
+--font-display:  'Cal Sans' or 'DM Serif Display'
+--font-body:     'Inter'  ← yes I know I said avoid it, 
+                            but Raycast uses it and it works 
+                            at this precision level
+--font-mono:     'JetBrains Mono'
 
----
-
-## Color Palette
-
-Defined as CSS variables in `src/styles/globals.css`:
-
-```css
-:root {
-  --bg-primary: #0a0a0a;          /* Near-black page background */
-  --bg-secondary: #111111;        /* Card / section backgrounds */
-  --bg-tertiary: #1a1a1a;         /* Subtle elevation */
-
-  --text-primary: #f0f0f0;        /* Main body text */
-  --text-secondary: #a0a0a0;      /* Muted / supporting text */
-  --text-tertiary: #606060;       /* Placeholder, disabled */
-
-  --accent: #e8ff47;              /* Primary accent — sharp yellow-green */
-  --accent-dim: rgba(232,255,71,0.12); /* Accent tint for backgrounds */
-
-  --border: #222222;              /* Subtle borders */
-  --border-hover: #333333;        /* Border on hover */
-}
-```
-
-**Rules:**
-- The accent color (`--accent`) is used sparingly — active states, highlights, CTAs only
-- Never use the accent for large background fills
-- All text must pass WCAG AA contrast on `--bg-primary`
-
----
-
-## Typography
-
-```css
-/* Display / Headings */
-font-family: 'DM Serif Display', serif;
-
-/* Body */
-font-family: 'DM Sans', sans-serif;
-
-/* Monospace / code / labels */
-font-family: 'JetBrains Mono', monospace;
+EFFECTS:
+- Cards: backdrop-blur-sm, border border-white/[0.06]
+- Glow behind hero: radial-gradient blur blob, purple-tinted
+- Gradient borders on featured cards
+- Animated gradient background (subtle, slow)
 ```
 
 **Scale:**
@@ -148,3 +127,24 @@ animate={{ opacity: 1, y: 0 }}
 - Do not center-align body text
 - Do not add box shadows — use borders and background contrast instead
 - Do not use more than 2 font families
+
+### 2. Gradient Borders on Cards
+Cards don't have plain borders — they have **gradient borders** that shift on hover. Creates depth without being loud.
+
+### 3. Spotlight / Cursor Glow Effect
+As you move your cursor across the page, a **soft light follows it** — illuminating cards slightly. This is Raycast's signature interaction.
+
+### 4. Text Shimmer Animation
+Key words in headlines have a **shimmer/gradient sweep** across them. Subtle but premium.
+
+### 5. Staggered Entry Animations
+Elements don't appear all at once — they **cascade in** with staggered delays using Framer Motion. Each section reveals as you scroll.
+
+### 6. Hover Lift on Cards
+Cards have a micro **upward shift + glow intensification** on hover. Feels physical.
+
+### 7. Smooth Number Counters
+Stats like `8.5 SGPA`, `2 Projects`, `2 Awards` count up when they enter the viewport.
+
+### 8. Command Palette Style
+The AI chat widget opens like Raycast itself — **scales up from center** with a blur backdrop.

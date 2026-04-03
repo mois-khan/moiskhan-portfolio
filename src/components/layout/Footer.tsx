@@ -7,21 +7,28 @@ export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="border-t border-[#222222] py-12 mt-20">
-      <div className="max-w-6xl xl:max-w-7xl mx-auto px-6 md:px-8">
+    <footer
+      className="py-12 mt-20"
+      style={{ borderTop: '1px solid var(--border)' }}
+    >
+      <div className="max-w-5xl mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          {/* Copyright */}
-          <p className="text-sm text-[#a0a0a0]">
+          <p
+            className="text-sm"
+            style={{ color: 'var(--text-tertiary)' }}
+          >
             © {currentYear} {personal.name}. All rights reserved.
           </p>
 
-          {/* Social Links */}
-          <div className="flex items-center gap-6" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+          <div className="flex items-center gap-6" style={{ fontFamily: 'var(--font-mono)' }}>
             <a
               href={personal.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-[#a0a0a0] hover:text-[#e8ff47] transition-colors duration-200"
+              className="text-sm transition-colors duration-200"
+              style={{ color: 'var(--text-secondary)' }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
             >
               GitHub
             </a>
@@ -29,7 +36,10 @@ export function Footer() {
               href={personal.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-[#a0a0a0] hover:text-[#e8ff47] transition-colors duration-200"
+              className="text-sm transition-colors duration-200"
+              style={{ color: 'var(--text-secondary)' }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
             >
               LinkedIn
             </a>
@@ -38,7 +48,10 @@ export function Footer() {
                 href={personal.twitter}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-[#a0a0a0] hover:text-[#e8ff47] transition-colors duration-200"
+                className="text-sm transition-colors duration-200"
+                style={{ color: 'var(--text-secondary)' }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
               >
                 Twitter
               </a>

@@ -1,56 +1,98 @@
 // src/components/sections/Achievements.tsx
-// Achievements section with hackathon wins and awards
+// Achievements section — hackathon wins and awards
 
 import { motion } from 'framer-motion'
 import { achievements } from '../../data'
 
+const sectionVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: 'easeOut', staggerChildren: 0.1 },
+  },
+}
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+}
+
 export function Achievements() {
   return (
-    <section className="py-16">
-      <div className="max-w-6xl xl:max-w-7xl mx-auto px-6 md:px-8">
+    <section className="py-20 md:py-32">
+      <div className="max-w-5xl mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-100px' }}
         >
-          <h2 className="text-4xl md:text-5xl mb-8 text-[#f0f0f0]" style={{ fontFamily: "'DM Serif Display', serif" }}>
+          <motion.h2
+            className="text-3xl md:text-4xl mb-8"
+            style={{ color: 'var(--text-primary)' }}
+            variants={cardVariants}
+          >
             Achievements
-          </h2>
+          </motion.h2>
 
           <div className="space-y-4">
-            {achievements.map((achievement, index) => (
+            {achievements.map((achievement) => (
               <motion.article
                 key={achievement.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1, ease: 'easeOut' }}
-                className="bg-[#111111] border border-[#222222] rounded-xl p-7 hover:border-[#333333] transition-colors duration-200"
+                variants={cardVariants}
+                className="rounded-xl p-7"
+                style={{
+                  background: 'var(--bg-secondary)',
+                  border: '1px solid var(--border)',
+                }}
+                whileHover={{
+                  y: -4,
+                  borderColor: 'var(--border-hover)',
+                  boxShadow: '0 12px 40px rgba(0,0,0,0.4)',
+                }}
+                transition={{ duration: 0.2, ease: 'easeOut' }}
               >
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
                   <div className="flex-1">
-                    <h3 className="text-2xl font-medium text-[#f0f0f0] mb-2" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                    <h3
+                      className="text-xl font-medium mb-2"
+                      style={{ fontFamily: 'var(--font-body)', color: 'var(--text-primary)' }}
+                    >
                       {achievement.title}
                     </h3>
-                    <p className="text-base text-[#a0a0a0] mb-1" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                    <p
+                      className="text-base"
+                      style={{ fontFamily: 'var(--font-body)', color: 'var(--text-secondary)' }}
+                    >
                       {achievement.event}
                     </p>
                   </div>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 shrink-0">
                     <span
-                      className="inline-block px-3 py-1 bg-[#1a1a1a] text-[#e8ff47] text-xs rounded uppercase tracking-wider"
-                      style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                      className="inline-block px-3 py-1 rounded-md text-xs uppercase tracking-wider"
+                      style={{
+                        fontFamily: 'var(--font-mono)',
+                        background: 'var(--accent-subtle)',
+                        color: 'var(--accent)',
+                        border: '1px solid rgba(124, 92, 252, 0.15)',
+                      }}
                     >
                       {achievement.position}
                     </span>
-                    <span className="text-base text-[#606060]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+                    <span
+                      className="text-sm"
+                      style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-tertiary)' }}
+                    >
                       {new Date(achievement.date).getFullYear()}
                     </span>
                   </div>
                 </div>
-                
-                <p className="text-lg text-[#a0a0a0] leading-relaxed mb-4" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+
+                <p
+                  className="text-base leading-relaxed mb-4"
+                  style={{ fontFamily: 'var(--font-body)', color: 'var(--text-secondary)' }}
+                >
                   {achievement.description}
                 </p>
 
@@ -59,8 +101,8 @@ export function Achievements() {
                     href={achievement.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center text-sm text-[#e8ff47] hover:underline transition-all duration-200"
-                    style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                    className="inline-flex items-center text-sm transition-opacity duration-200 hover:opacity-70"
+                    style={{ fontFamily: 'var(--font-mono)', color: 'var(--accent)' }}
                   >
                     View Details →
                   </a>

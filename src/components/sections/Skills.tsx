@@ -4,41 +4,69 @@
 import { motion } from 'framer-motion'
 import { skills } from '../../data'
 
+const sectionVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: 'easeOut', staggerChildren: 0.1 },
+  },
+}
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+}
+
 export function Skills() {
   return (
-    <section className="py-16">
-      <div className="max-w-6xl xl:max-w-7xl mx-auto px-6 md:px-8">
+    <section className="py-20 md:py-32">
+      <div className="max-w-5xl mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-100px' }}
         >
-          <h2 className="text-4xl md:text-5xl mb-8 text-[#f0f0f0]" style={{ fontFamily: "'DM Serif Display', serif" }}>
+          <motion.h2
+            className="text-3xl md:text-4xl mb-8"
+            style={{ color: 'var(--text-primary)' }}
+            variants={cardVariants}
+          >
             Skills
-          </h2>
+          </motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
-            {skills.map((skillGroup, index) => (
+            {skills.map((skillGroup) => (
               <motion.div
                 key={skillGroup.category}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1, ease: 'easeOut' }}
-                className="bg-[#111111] border border-[#222222] rounded-xl p-7 hover:border-[#333333] transition-colors duration-200"
+                variants={cardVariants}
+                whileHover={{
+                  y: -4,
+                  borderColor: 'var(--border-hover)',
+                  boxShadow: '0 12px 40px rgba(0,0,0,0.4)',
+                }}
+                transition={{ duration: 0.2, ease: 'easeOut' }}
+                className="rounded-xl p-7"
+                style={{
+                  background: 'var(--bg-secondary)',
+                  border: '1px solid var(--border)',
+                }}
               >
-                <h3 className="text-xl font-medium mb-5 text-[#f0f0f0]" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                <h3
+                  className="text-lg font-medium mb-5"
+                  style={{ fontFamily: 'var(--font-body)', color: 'var(--text-primary)' }}
+                >
                   {skillGroup.category}
                 </h3>
                 <ul className="space-y-3">
                   {skillGroup.items.map((skill) => (
                     <li
                       key={skill}
-                      className="text-base text-[#a0a0a0] flex items-start"
-                      style={{ fontFamily: "'DM Sans', sans-serif" }}
+                      className="text-base flex items-start"
+                      style={{ fontFamily: 'var(--font-body)', color: 'var(--text-secondary)' }}
                     >
-                      <span className="text-[#e8ff47] mr-2">•</span>
+                      <span className="mr-2" style={{ color: 'var(--accent)' }}>•</span>
                       {skill}
                     </li>
                   ))}

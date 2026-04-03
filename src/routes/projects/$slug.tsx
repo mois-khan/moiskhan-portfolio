@@ -20,11 +20,17 @@ function ProjectEmbedPage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: 'easeOut' }}
-        className="max-w-6xl xl:max-w-7xl mx-auto px-6 md:px-8 py-20"
+        className="max-w-5xl mx-auto px-6 py-20"
       >
-        <h1 className="text-4xl md:text-5xl font-serif text-[#f0f0f0] mb-4">Project not found</h1>
-        <p className="text-[#a0a0a0] text-lg">
-          We could not find a project with slug: <span style={{ fontFamily: "'JetBrains Mono', monospace" }}>{slug}</span>
+        <h1
+          className="text-4xl md:text-5xl mb-4"
+          style={{ fontFamily: 'var(--font-display)', color: 'var(--text-primary)' }}
+        >
+          Project not found
+        </h1>
+        <p style={{ fontFamily: 'var(--font-body)', color: 'var(--text-secondary)' }} className="text-lg">
+          We could not find a project with slug:{' '}
+          <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--accent)' }}>{slug}</span>
         </p>
       </motion.div>
     )
