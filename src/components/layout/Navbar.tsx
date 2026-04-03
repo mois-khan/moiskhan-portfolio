@@ -9,8 +9,10 @@ import { personal } from '../../data'
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [logoLoadError, setLogoLoadError] = useState(false)
   const location = useLocation()
-  const hasLogo = Boolean(personal.logoUrl?.trim())
+  const normalizedLogoUrl = personal.logoUrl?.trim().replace(/^\/?public\//, '/')
+  const hasLogo = Boolean(normalizedLogoUrl) && !logoLoadError
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 40)
@@ -28,6 +30,10 @@ export function Navbar() {
     document.body.style.overflow = mobileOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [mobileOpen])
+
+  useEffect(() => {
+    setLogoLoadError(false)
+  }, [normalizedLogoUrl])
 
   const toggleMobile = useCallback(() => setMobileOpen(prev => !prev), [])
 
@@ -71,10 +77,11 @@ export function Navbar() {
             >
               {hasLogo ? (
                 <img
-                  src={personal.logoUrl}
+                  src={normalizedLogoUrl}
                   alt={`${personal.name} logo`}
                   className="w-full h-full object-cover object-center scale-110"
                   loading="lazy"
+                  onError={() => setLogoLoadError(true)}
                 />
               ) : (
                 'M'
