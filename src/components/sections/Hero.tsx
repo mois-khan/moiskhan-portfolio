@@ -4,6 +4,7 @@
 import { motion } from 'framer-motion'
 import { Link } from '@tanstack/react-router'
 import { personal } from '../../data'
+import { useTypewriter } from '../../hooks/useTypewriter'
 
 const fadeUp = (delay: number) => ({
   initial: { opacity: 0, y: 24 },
@@ -17,7 +18,16 @@ const fadeIn = (delay: number) => ({
   transition: { duration: 0.6, delay, ease: 'easeOut' },
 })
 
+const roles = [
+  'Full-Stack Developer',
+  'AI Engineer',
+  'Problem Solver',
+  'Open Source Builder',
+]
+
 export function Hero() {
+  const typedRole = useTypewriter(roles, 90, 50, 2200)
+
   return (
     <section
       className="relative min-h-screen flex items-center overflow-hidden"
@@ -63,16 +73,29 @@ export function Hero() {
               {...fadeUp(0.15)}
             >
               Hi, I'm{' '}
-              <span style={{ color: 'var(--accent)' }}>Mois</span>
+              <span className="gradient-text">Mois</span>
             </motion.h1>
 
             {/* Tagline */}
             <motion.p
-              className="text-lg md:text-xl mb-4 leading-relaxed"
+              className="text-lg md:text-xl mb-2 leading-relaxed"
               style={{ fontFamily: 'var(--font-body)', color: 'var(--text-secondary)' }}
               {...fadeUp(0.25)}
             >
               {personal.tagline}
+            </motion.p>
+
+            {/* Typewriter roles */}
+            <motion.p
+              className="text-base md:text-lg mb-4 flex items-center gap-1"
+              style={{ fontFamily: 'var(--font-mono)', color: 'var(--accent)' }}
+              {...fadeUp(0.28)}
+            >
+              {'> '}{typedRole}
+              <span
+                className="inline-block w-[2px] h-[1.1em] ml-0.5 animate-pulse"
+                style={{ background: 'var(--accent)' }}
+              />
             </motion.p>
 
             {/* Location */}

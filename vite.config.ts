@@ -8,6 +8,11 @@ export default defineConfig({
     react(),
     TanStackRouterVite(),
   ],
+   server: {
+    allowedHosts: [
+      'concavely-inflationary-eddy.ngrok-free.dev'
+    ]
+   },
   css: {
     postcss: './postcss.config.js',
   },

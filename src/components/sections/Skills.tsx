@@ -60,50 +60,60 @@ export function Skills() {
                 key={skillGroup.category}
                 variants={cardVariants}
                 whileHover={{
-                  y: -3,
-                  borderColor: 'rgba(255,255,255,0.10)',
-                  boxShadow: '0 12px 40px rgba(0,0,0,0.35)',
+                  y: -4,
+                  borderColor: 'rgba(124, 92, 252, 0.2)',
+                  boxShadow: '0 16px 50px rgba(0,0,0,0.4), 0 0 30px rgba(124,92,252,0.06)',
                 }}
-                transition={{ duration: 0.2, ease: 'easeOut' }}
-                className="rounded-xl p-6"
+                transition={{ duration: 0.25, ease: 'easeOut' }}
+                className="gradient-border-card group rounded-xl p-6 relative overflow-hidden"
                 style={{
                   background: 'var(--bg-secondary)',
                   border: '1px solid var(--border)',
                 }}
               >
-                <div className="flex items-center gap-3 mb-5">
-                  <span
-                    className="w-9 h-9 rounded-lg flex items-center justify-center text-sm"
-                    style={{
-                      background: 'var(--accent-subtle)',
-                      color: 'var(--accent)',
-                      border: '1px solid rgba(124,92,252,0.12)',
-                    }}
-                  >
-                    {categoryIcons[skillGroup.category] || '◆'}
-                  </span>
-                  <h3
-                    className="text-base font-medium"
-                    style={{ fontFamily: 'var(--font-body)', color: 'var(--text-primary)' }}
-                  >
-                    {skillGroup.category}
-                  </h3>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {skillGroup.items.map((skill) => (
+                {/* Hover glow backdrop */}
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{
+                    background: 'radial-gradient(circle at 50% 0%, rgba(124,92,252,0.06) 0%, transparent 70%)',
+                  }}
+                />
+
+                <div className="relative z-10">
+                  <div className="flex items-center gap-3 mb-5">
                     <span
-                      key={skill}
-                      className="px-3 py-1.5 rounded-md text-xs"
+                      className="w-9 h-9 rounded-lg flex items-center justify-center text-sm transition-all duration-300 group-hover:shadow-[0_0_12px_rgba(124,92,252,0.25)]"
                       style={{
-                        fontFamily: 'var(--font-mono)',
-                        background: 'var(--bg-tertiary)',
-                        color: 'var(--text-secondary)',
-                        border: '1px solid var(--border)',
+                        background: 'var(--accent-subtle)',
+                        color: 'var(--accent)',
+                        border: '1px solid rgba(124,92,252,0.12)',
                       }}
                     >
-                      {skill}
+                      {categoryIcons[skillGroup.category] || '◆'}
                     </span>
-                  ))}
+                    <h3
+                      className="text-base font-medium"
+                      style={{ fontFamily: 'var(--font-body)', color: 'var(--text-primary)' }}
+                    >
+                      {skillGroup.category}
+                    </h3>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {skillGroup.items.map((skill) => (
+                      <span
+                        key={skill}
+                        className="px-3 py-1.5 rounded-md text-xs transition-all duration-200 hover:border-[rgba(124,92,252,0.25)] hover:text-[var(--accent)]"
+                        style={{
+                          fontFamily: 'var(--font-mono)',
+                          background: 'var(--bg-tertiary)',
+                          color: 'var(--text-secondary)',
+                          border: '1px solid var(--border)',
+                        }}
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </motion.div>
             ))}
