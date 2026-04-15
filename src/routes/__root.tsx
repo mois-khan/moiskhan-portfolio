@@ -4,6 +4,7 @@
 import { createRootRoute, Outlet, useLocation } from '@tanstack/react-router'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useState, useCallback } from 'react'
+import { Analytics } from '@vercel/analytics/react'
 import { Navbar } from '../components/layout/Navbar'
 import { Footer } from '../components/layout/Footer'
 import { ScrollProgress } from '../components/ui/ScrollProgress'
@@ -56,6 +57,7 @@ function RootLayout() {
       <ScrollProgress />
       <Navbar />
       <CommandPalette />
+      <Analytics />
       <main className="flex-1 relative z-[1]">
         <AnimatePresence mode="wait">
           <motion.div
