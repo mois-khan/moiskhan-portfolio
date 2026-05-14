@@ -5,6 +5,14 @@ import type { Achievement } from "../types"
 
 export const achievements: Achievement[] = [
   {
+    title: "Participant — Bower AI Hackathon 2026",
+    event: "Bower School of Entrepreneurship",
+    date: "2026-05-14",
+    description: "Architected and built DealLens, an automated due diligence engine for investors. Pivoted the product from a manual analysis tool to an automated inbound filtering pipeline based on mentor feedback.",
+    position: "Participant",
+    link: "https://github.com/mois-khan/DealLens",
+  },
+  {
     title: "2nd Prize — NYXORA MREM 2k26",
     event: "NYXORA MREM 2k26",
     date: "2026-03-27",               // Update with exact date

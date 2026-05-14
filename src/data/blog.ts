@@ -9,57 +9,82 @@ export type BlogPostWithContent = BlogPost & {
 
 export const blogPosts: BlogPostWithContent[] = [
   {
-    slug: 'books-that-shaped-how-i-think',
-    title: 'Books That Shaped How I Think About Building Software',
+    slug: 'the-roi-of-reading-fiction-vs-non-fiction',
+    title: 'The ROI of Reading: Why I Can’t Afford Fiction (Yet)',
     description:
-      'Five books that changed the way I approach problem-solving, system design, and engineering as a whole — from "Atomic Habits" to "The Pragmatic Programmer".',
-    date: '2026-03-20',
-    tags: ['Books', 'Personal Growth', 'Engineering'],
+      'A reflection on my experience at the BookTalk meetup at Bahrisons. Why I prioritize systems over stories, and the philosophical clash between self-help and sci-fi.',
+    date: '2026-05-02',
+    tags: ['Books', 'Philosophy', 'Productivity', 'Community'],
     published: true,
-    readingTime: '6 min read',
+    readingTime: '5 min read',
     content: `
-<p>I started reading seriously in my second year of college. Not textbooks — those I'd been forced to read my whole life — but books I chose because I genuinely wanted to understand how things work beyond code.</p>
+<p>Bahrisons Booksellers in Hyderabad is a beautiful space—smelling of old paper and fresh coffee. I walked in with high expectations for the "BookTalk" meetup organized by Communitie, carrying my notes on <em>Deep Work</em> and <em>Thinking Fast and Slow</em>, ready to discuss the neurobiology of focus and system design.</p>
 
-<p>Here are five books that genuinely changed how I think. Not in a "motivational quote" way, but in a "I literally write different code now" way.</p>
+<h2>The Culture Shock</h2>
 
-<h2>1. Atomic Habits — James Clear</h2>
+<p>For the first 90 minutes, I felt like a stranger in a strange land. The room was buzzing with talk of world-building, sci-fi tropes, and fictional character arcs. Most of the books and authors being discussed were entirely foreign to me. To the group, these stories were essential. To me—a CS student in the middle of a high-stakes career-building sprint—it felt like watching valuable time slip away.</p>
 
-<p>Everyone recommends this book and for good reason. But the part that stuck with me wasn't the habit stacking or the 1% improvement math. It was the idea that <strong>you don't rise to the level of your goals, you fall to the level of your systems.</strong></p>
+<p>I realized then that the room was speaking a different language. They were discussing <strong>Life as a Story</strong>, while I was there to discuss <strong>Life as a System</strong>.</p>
 
-<p>I applied this directly to coding. Instead of saying "I'll build a project this month," I set up a system: open VS Code every morning at 9, write at least 20 lines, push to GitHub before lunch. The projects became a side effect of the system, not the goal.</p>
+<h2>The Debate: Systems vs. Stories</h2>
 
-<h2>2. The Pragmatic Programmer — David Thomas & Andrew Hunt</h2>
+<p>When it was finally my turn, I didn't sugarcoat my perspective. I shared my "Three Pillars": <em>The 5 AM Club</em> by Robin Sharma, <em>Deep Work</em> by Cal Newport, and <em>Thinking Fast and Slow</em> by Daniel Kahneman. I told the group plainly: <strong>"I don't read fiction, and I don't plan to in the near future. I simply can't afford to."</strong></p>
 
-<p>This is the book that made me stop writing "clever" code and start writing code that my future self could actually read. Two concepts that stayed with me:</p>
+<p>The pushback was immediate and fascinating. <em>"Self-help books are all the same,"</em> they argued. <em>"You read them but never actually apply them. Fiction is what actually teaches you empathy and gives you a broader perspective on the world."</em> Some even warned me that once I started working, I’d never have the time to read fiction again, so I should "enjoy it now."</p>
 
+<h2>The Engineer’s Takeaway</h2>
+
+<p>This experience wasn't just a disagreement about book genres; it was a fundamental clash over <strong>Opportunity Cost</strong>. From my perspective, as a student and a developer, every hour I spend reading is an investment. I am in the "Building Phase" of my life. In this phase, the ROI (Return on Investment) of a book that teaches me how to focus deeply or how the human brain makes decisions is infinitely higher than a book about a fictional galactic empire.</p>
+
+<p>I left Bahrisons that day with a clear realization: <strong>Your inputs determine your outputs.</strong> While I respect the empathy that fiction can build, my priority right now is building the systems and habits that will define my career. I might not be joining the sci-fi circle again, but I’m more convinced than ever that being ruthless about your intellectual inputs is a superpower.</p>
+
+<p><em>What’s your take? Can we "afford" fiction in the middle of a sprint, or is it a luxury for later?</em></p>
+`,
+  },
+  {
+    slug: 'deallens-hackathon-build',
+    title: '40 Hours to 10 Minutes: How We Built DealLens in a Weekend',
+    description:
+      'Lessons from the Bower AI Hackathon 2026: Building an automated due diligence engine, pivoting based on mentor feedback, and hacking through API rate limits.',
+    date: '2026-05-12',
+    tags: ['Hackathon', 'AI Agents', 'FinTech', 'Engineering'],
+    published: true,
+    readingTime: '7 min read',
+    content: `
+<p>Imagine you're an angel investor. Your inbox is a graveyard of "game-changing" pitch decks. To verify just one—checking founder backgrounds, mapping competitors, and validating market size—takes 40+ hours of manual, tab-switching hell. Most investors just rely on their gut. At the <strong>Bower AI Hackathon 2026</strong>, we decided to automate that "gut feeling."</p>
+
+<h2>The Problem: The Due Diligence Bottleneck</h2>
+
+<p>The gap between a startup's pitch and its reality is often hidden in hours of research. Small VCs and angel investors don't have the massive teams that Sequoia or Accel do. They spend their weekends manually identifying sources, cross-referencing claims, and trying to stay objective. We set out to build <strong>DealLens</strong> to bridge that gap.</p>
+
+<h2>The Mid-Hackathon Pivot: From Tool to Pipeline</h2>
+
+<p>Initially, we built a simple "Upload and Analyze" tool. It was functional, but on Day 1, we met with mentor <strong>Abhijeet Navandar</strong>. He challenged our UX: <em>"Why should the investor even have to upload? They should just receive filtered insights."</em></p>
+
+<p>That conversation changed everything. We pivoted DealLens from a manual tool to an <strong>Automated Inbound Filter</strong>. We built a custom "founder link" that investors can put in their social bios. When a founder applies, the system automatically:</p>
 <ul>
-<li><strong>DRY (Don't Repeat Yourself)</strong> — but the nuance is that DRY is about knowledge, not code. Two identical-looking functions that represent different business logic should NOT be merged.</li>
-<li><strong>Tracer bullets</strong> — build a thin, working end-to-end slice first. Not a prototype. An actual working piece that you can iterate on. This is exactly how I built SafeRoute AI — a single route calculation that worked before I added safety scoring.</li>
+  <li>Classifies the startup's domain and industry.</li>
+  <li>Filters the submission against the investor's specific interests and preferences.</li>
+  <li>Populates a high-end dashboard where the investor only sees what matters.</li>
 </ul>
 
-<h2>3. Deep Work — Cal Newport</h2>
+<h2>Engineering for Performance: The Parallel Pipeline</h2>
 
-<p>Reading this during exam season was both a blessing and a curse. Newport's argument is simple: the ability to focus without distraction is becoming rare and therefore valuable. The people who cultivate this skill will dominate.</p>
+<p>Building an agentic pipeline that researches founders, competitors, and TAM (Total Addressable Market) is computationally expensive. If the analysis took 10 minutes to run, the user experience would suffer. To solve this, we architected the backend using <strong>FastAPI</strong> and Python's <strong>asyncio</strong>.</p>
 
-<p>I started blocking out 3-hour "deep work" windows with my phone in another room. The difference was staggering. What used to take me a full day — setting up an Express server with auth, database, and basic CRUD — I could finish in one focused session.</p>
+<p>By running the market analysis, competitor mapping, and founder background checks in parallel, we <strong>reduced end-to-end latency by 3x</strong>. This ensured that by the time an investor clicks "View Report," the data is ready and structured.</p>
 
-<h2>4. Show Your Work — Austin Kleon</h2>
+<h2>The "9 API Key" Hack</h2>
 
-<p>This short book convinced me to build this portfolio and start writing. Kleon's argument is that you don't need to be an expert to share — you just need to be one step ahead of someone else. Document what you're learning, share your process, and the audience finds you.</p>
+<p>Every hackathon has its "breaking point." Ours was the <strong>Gemini API</strong>. Due to high traffic during the event, we were constantly hitting rate limits and 500 errors. To ensure our demo stayed alive for the judges, we built a round-robin cycling system using <strong>9 API keys across 5 different accounts</strong>. It wasn't the "cleanest" solution, but it guaranteed 100% uptime when it mattered most. Engineering is often about solving for reliability under pressure.</p>
 
-<p>It's why I write about what I build, not just build things. The building is the easy part. Articulating what you did and why — that's the skill that compounds.</p>
+<h2>Reflections: Beyond the Trophy</h2>
 
-<h2>5. Designing Data-Intensive Applications — Martin Kleppmann</h2>
+<p>We didn't make the Top 15 shortlist. In a room full of brilliant teams, that's part of the game. But what we walked away with was more valuable: a validated product pivot, a high-performance FastAPI pipeline, and a system that actually solves a $10,000+ problem for small investors.</p>
 
-<p>This was the hardest book on this list and I'm still working through parts of it. But even the first few chapters fundamentally changed how I think about databases, consistency, and distributed systems. When I was building CallShield AI's real-time pipeline, I kept coming back to Kleppmann's chapters on stream processing and exactly-once semantics.</p>
+<p>For me, DealLens isn't just a hackathon project; it’s a demonstration of how to listen to feedback, optimize for performance, and build resilient systems that solve real-world friction.</p>
 
-<p>You don't need to understand every page. But having a mental model of how data flows through systems — from a user's tap to a database write to a real-time notification — makes you a fundamentally better engineer.</p>
-
-<h2>The common thread</h2>
-
-<p>None of these books taught me a programming language or a framework. They taught me how to <strong>think</strong>. Frameworks change every two years. The ability to design systems, focus deeply, build sustainable habits, and communicate clearly — those compound forever.</p>
-
-<p>If you're a student reading this: read one book a month that isn't assigned by your university. Your future self will thank you.</p>
+<p><em>DealLens is live and open-source. Check it out on <a href="https://github.com/mois-khan/DealLens" target="_blank">GitHub</a>.</em></p>
 `,
   },
   {
