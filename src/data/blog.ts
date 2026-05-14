@@ -9,6 +9,39 @@ export type BlogPostWithContent = BlogPost & {
 
 export const blogPosts: BlogPostWithContent[] = [
   {
+    slug: 'breaking-the-silence-my-first-community-event',
+    title: 'Breaking the Silence: My First Step Out of the Comfort Zone',
+    description:
+      'A personal reflection on attending my first community event, Studentpreneurs: Vibe & Connect. Lessons on networking, helping others, and the art of asking better questions.',
+    date: '2026-04-19',
+    tags: ['Community', 'Networking', 'Growth Mindset', 'Soft Skills'],
+    published: true,
+    readingTime: '4 min read',
+    content: `
+<p>Wanderlust Cafe in KPHB was buzzing. Around 30 people—a diverse mix ranging from high schoolers to techies and business students—were talking, laughing, and "vibing." I was there, sitting in the middle of it all, but I was silent. For someone who had always been "less social," walking into <strong>Studentpreneurs: Vibe & Connect (Edition-5)</strong> was a massive leap out of my comfort zone.</p>
+
+<h2>The Experiment</h2>
+
+<p>I didn't attend this event to find a co-founder or to pitch a project. I attended because I knew I was too comfortable in my own shell. I wanted to see if I could handle the pressure of a social environment and improve my ability to interact with strangers. For the first hour, I remained a silent observer, curious but hesitant. It took a structured ice-breaker activity to finally crack the shell.</p>
+
+<p>Once the ice was broken, the energy shifted. I met a peer from the business side who had a vision but was struggling with the technical "how." I found myself suggesting tools and architectural paths for his idea. In that moment, the nervousness vanished. I realized that my technical skills weren't just for building apps; they were a medium for helping others and starting conversations.</p>
+
+<h2>The Catalyst</h2>
+
+<p>One of the highlights of the afternoon was hearing from <strong>Abhishek Pratap</strong>, the CEO of Extrive Innovations and the <em>Catalyst Talk</em> of the event. Seeing a young founder leading a company was inspiring, but it was our brief conversation afterward that provided my most valuable takeaway.</p>
+
+<p>He didn't talk about code or funding. He talked about <strong>clarity</strong>. It led me to a realization that has changed how I approach engineering: <strong>The quality of your solution is limited by the quality of your questions.</strong></p>
+
+<p>Before you build, you must ask: <em>What is the core problem? Is this feasible? What is the actual impact?</em> Asking better questions leads to a clearer understanding, which leads to better software.</p>
+
+<h2>Contentment</h2>
+
+<p>I walked out of Wanderlust Cafe that Sunday feeling a deep sense of contentment. I hadn't just "networked"; I had intentionally sought discomfort and found growth on the other side. It was the first step in a journey that would eventually lead me to hackathons, collaborative projects, and the portfolio you are reading today.</p>
+
+<p><em>To anyone reading this who feels "less social": the first hour is the hardest. The growth on the other side is worth it.</em></p>
+`,
+  },
+  {
     slug: 'the-roi-of-reading-fiction-vs-non-fiction',
     title: 'The ROI of Reading: Why I Can’t Afford Fiction (Yet)',
     description:
